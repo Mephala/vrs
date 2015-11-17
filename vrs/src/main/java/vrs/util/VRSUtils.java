@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 
 import vrs.model.Position;
+import vrs.model.Rotation;
 import vrs.model.VRView;
 
 public class VRSUtils {
@@ -36,7 +37,14 @@ public class VRSUtils {
 			String[] data = appendedString.split(",");
 			VRView retval = new VRView();
 			Position p = new Position();
-			// p.setPx(data);
+			p.setPx(Double.parseDouble(data[1]));
+			p.setPy(Double.parseDouble(data[2]));
+			p.setPz(Double.parseDouble(data[3]));
+			Rotation rot = new Rotation();
+			rot.setRx(Double.parseDouble(data[4]));
+			rot.setRy(Double.parseDouble(data[5]));
+			rot.setRz(Double.parseDouble(data[6]));
+			rot.setRw(Double.parseDouble(data[7]));
 			return null;
 
 		} catch (Throwable t) {
