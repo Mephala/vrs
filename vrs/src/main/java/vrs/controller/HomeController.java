@@ -17,6 +17,7 @@ public class HomeController {
 
 	private Logger logger = Logger.getLogger(getClass());
 
+	// test
 	@RequestMapping(value = "/homepage")
 	@ResponseBody
 	public Object showHome(HttpServletRequest request, HttpServletResponse response) {
