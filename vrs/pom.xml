@@ -32,12 +32,7 @@
   
   <dependencies> 
       
-      	<dependency>
-			<groupId>service-provider</groupId>
-			<artifactId>service-provider-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-      	
+            	
   		<!-- Spring 3 dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
