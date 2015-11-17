@@ -23,7 +23,7 @@ public class HomeController {
 	private Logger logger = Logger.getLogger(getClass());
 	private Map<String, List<String>> dataMap = new HashMap<>();
 
-	// test
+	// test2
 	@RequestMapping(value = "/homepage")
 	@ResponseBody
 	public Object showHome(HttpServletRequest request, HttpServletResponse response) {
