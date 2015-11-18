@@ -24,7 +24,7 @@ public class HomeController {
 	private Map<String, List<String>> dataMap = new HashMap<>();
 	private List<String> incData = new ArrayList<>();
 
-	// test
+	// test2
 	@RequestMapping(value = "/homepage")
 	@ResponseBody
 	public Object showHome(HttpServletRequest request, HttpServletResponse response) {
