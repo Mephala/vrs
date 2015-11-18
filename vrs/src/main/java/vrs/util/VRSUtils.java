@@ -45,7 +45,11 @@ public class VRSUtils {
 			rot.setRy(Double.parseDouble(data[5]));
 			rot.setRz(Double.parseDouble(data[6]));
 			rot.setRw(Double.parseDouble(data[7]));
-			return null;
+			retval.setPos(p);
+			retval.setRot(rot);
+			retval.setId(data[0]);
+			retval.setTime(Double.parseDouble(data[8]));
+			return retval;
 
 		} catch (Throwable t) {
 			logger.error("Failed to construct model", t);

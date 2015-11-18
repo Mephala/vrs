@@ -22,6 +22,7 @@ public class HomeController {
 
 	private Logger logger = Logger.getLogger(getClass());
 	private Map<String, List<String>> dataMap = new HashMap<>();
+	private List<String> incData = new ArrayList<>();
 
 	// test
 	@RequestMapping(value = "/homepage")
@@ -56,6 +57,9 @@ public class HomeController {
 		dataList.add(sb.toString());
 		dataMap.put(id, dataList);
 		logger.info("Received data is:" + sb.toString());
+		synchronized (incData) {
+			incData.add(sb.toString());
+		}
 		return "OK";
 	}
 
@@ -63,16 +67,25 @@ public class HomeController {
 	@RequestMapping(value = "/getTrackData")
 	@ResponseBody
 	public Object getTrackData(HttpServletRequest request, HttpServletResponse response, @RequestParam String id) {
-		StringBuilder sb = new StringBuilder();
-		List<String> incomingData = dataMap.get(id);
-		if (incomingData == null)
-			return "INVALID_ID";
-		for (String string : incomingData) {
-			sb.append(string + ";");
-		}
+		// StringBuilder sb = new StringBuilder();
+		// List<String> incomingData = dataMap.get(id);
+		// if (incomingData == null)
+		// return "INVALID_ID";
+		// for (String string : incomingData) {
+		// sb.append(string + ";");
+		// }
 		logger.info("Received request from:" + VRSUtils.getClientIpAddr(request));
-		logger.info("Returning data:" + sb.toString());
-		return sb.toString();
+		String retval = "";
+		synchronized (incData) {
+			int size = incData.size();
+			if (size > 0) {
+				retval = incData.get(size - 1);
+				// incData.remove(size - 1);
+			} else
+				retval = "NO_DATA";
+		}
+		logger.info("Returning data:" + retval);
+		return retval;
 	}
 
 }
