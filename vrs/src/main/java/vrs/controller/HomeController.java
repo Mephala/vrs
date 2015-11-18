@@ -74,6 +74,7 @@ public class HomeController {
 		// for (String string : incomingData) {
 		// sb.append(string + ";");
 		// }
+		// TODO do.
 		logger.info("Received request from:" + VRSUtils.getClientIpAddr(request));
 		String retval = "";
 		synchronized (incData) {
